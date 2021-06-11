@@ -1,0 +1,8 @@
+<div class="task">
+  <h3>
+    {{ task.text }}
+    <!-- Use fa-icon component to load the icon and set a custom style -->
+    <fa-icon [icon]="faTimes" [ngStyle]="{ 'color': 'red' }"></fa-icon>
+  </h3>
+  <p>{{ task.day }}</p>
+</div>

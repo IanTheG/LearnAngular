@@ -1,0 +1,9 @@
+<!-- Use custom styles in props with ngStyle -->
+<!-- Utilize button's click method in component, triggers custom method onClick() -->
+<button
+  class="btn"
+  [ngStyle]="{ 'background-color': color }"
+  (click)="onClick()"
+>
+  {{ text }}
+</button>

@@ -1,0 +1,11 @@
+<header>
+  <h1>{{ title }}</h1>
+  <!-- Utilize the button component's custom function btnClick() -->
+  <!-- When called, call another function in the header toggleAddTask() -->
+  <app-button
+    color="dodgerblue"
+    text="Add"
+    (btnClick)="toggleAddTask()"
+    >
+  </app-button>
+</header>
