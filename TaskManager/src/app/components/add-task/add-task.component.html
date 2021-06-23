@@ -1,0 +1,25 @@
+<!-- ngSubmit automatically prevents a page reload -->
+<!-- *ngIf is like a v-if in Vue -->
+<form *ngIf="showAddTask" class="add-form" (ngSubmit)="onSubmit()">
+  <div class="form-control">
+    <label for="text">Task</label>
+    <!-- Use [] for receiving input, like from a form -->
+    <!-- Use () for sending output, like a browser event -->
+    <!-- Use [()] for two-way data binding to an element,
+      use ngModel with the same value as "name" attribute
+      AND the same name as the declared var in the class -->
+    <input type="text" name="text" id="text" placeholder="Add Task" [(ngModel)]="text">
+  </div>
+  <div class="form-control">
+    <label for="day">Date</label>
+    <input type="text" name="day" id="day" placeholder="Add date / time" [(ngModel)]="day">
+  </div>
+  <div class="form-control form-control-check">
+    <label for="reminder">Set Reminder</label>
+    <input type="checkbox" name="reminder" id="reminder" [(ngModel)]="reminder">
+  </div>
+  <input type="submit" value="Save Task" class="btn btn-block">
+  <!-- You can view the two-way data binding in action here -->
+  <!-- {{ text }} -->
+  <!-- {{ day }} -->
+</form>
