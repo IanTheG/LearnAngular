@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core'
 import { Router } from '@angular/router'
-import { completeLogin } from '../../../auth/spotify'
+import { completeSpotifyLogin } from '../../../auth/spotify'
+import { Title } from '@angular/platform-browser'
+import { UserService } from 'src/app/services/user/user.service'
 
 @Component({
   selector: 'app-callback',
@@ -13,14 +15,21 @@ import { completeLogin } from '../../../auth/spotify'
 */
 export class CallbackComponent implements OnInit {
 
-  constructor(private router: Router) { }
-
+  constructor(
+    private router: Router,
+    private ngTitleService: Title,
+    private userService: UserService,
+  ) { }
+  
   /** Completes the login when Spotify logs in successfully.
-   * Re-navigates to the home page
+   * Re-navigates to the home page.
+   * Fetches user from Spotify API after receiving valid token
    */
   async ngOnInit() {
+    this.ngTitleService.setTitle('Loading...')
     try {
-      await completeLogin()
+      await completeSpotifyLogin()
+      await this.fetchUserData()
       this.router.navigateByUrl('/')
     }
     catch (error) {
@@ -28,4 +37,7 @@ export class CallbackComponent implements OnInit {
     }
   }
 
+  async fetchUserData() {
+    await this.userService.fetchUserData()
+  }
 }
