@@ -1,0 +1,12 @@
+<header>
+  <h1>{{ title }}</h1>
+  <!-- Utilize the button component's custom function btnClick() -->
+  <!-- When called, call another function in the header toggleAddTask() -->
+  <app-button
+    *ngIf="hasRoute('/')"
+    color="{{ showAddTask ? 'red' : 'dodgerblue' }}"
+    text="{{ showAddTask ? 'Close' : 'Add' }}"
+    (btnClick)="toggleAddTask()"
+    >
+  </app-button>
+</header>
