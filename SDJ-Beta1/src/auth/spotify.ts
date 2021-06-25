@@ -56,7 +56,7 @@ class ErrorResponse extends Error {
   }
 }
 
-export async function beginLogin() {
+export async function beginSpotifyLogin() {
   // https://tools.ietf.org/html/rfc7636#section-4.1
   const code_verifier = base64url(randomBytes(96))
   const state = base64url(randomBytes(96))
@@ -77,7 +77,7 @@ export async function beginLogin() {
   location.href = `https://accounts.spotify.com/authorize?${params}`
 }
 
-export async function completeLogin() {
+export async function completeSpotifyLogin() {
   const code_verifier = sessionStorage.getItem('code_verifier') || ''
   const state = sessionStorage.getItem('state') || ''
 
@@ -101,8 +101,9 @@ export async function completeLogin() {
   })
 }
 
-export function logout() {
+export function logoutSpotify() {
   localStorage.removeItem('tokenSet')
+  sessionStorage.clear()
 }
 
 /**

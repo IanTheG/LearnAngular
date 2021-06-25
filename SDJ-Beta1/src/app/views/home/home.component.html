@@ -1,2 +1,4 @@
 <h1>SDJ v0.0.1</h1>
-<button (click)="signIn()">Sign in</button>
+<!-- <h2>{{ test }}</h2> -->
+<button *ngIf="!getUser()" (click)="signIn()">Sign in</button>
+<button *ngIf="getUser()" (click)="signOut()">Sign out</button>
